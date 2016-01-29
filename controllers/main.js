@@ -82,6 +82,14 @@ router.get('/logIn/:provider', function(req, res) {
   )(req, res);
 });
 
+// Facebook Oauth login
+router.get('/passport/:provider', function(req, res) {
+  passport.authenticate(
+    req.params.provider,
+    {scope: ['public_profile', 'email']}
+    )(req, res);
+});
+
 //facebook OAuth
 router.get('/callback/:provider', function(req, res) {
   passport.authenticate(req.params.provider, function(err, user, info) {
