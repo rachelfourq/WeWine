@@ -77,22 +77,22 @@ router.get('/logout', function(req, res) {
 
 router.get('/logIn/facebook', function(req, res) {
   passport.authenticate(
-    'facebook',
+    req.params.provider,
     {scope: ['public_profile', 'email']}
   )(req, res);
 });
 
 // Facebook Oauth login
-router.get('/passport/facebook', function(req, res) {
+router.get('/passport/:provider', function(req, res) {
   passport.authenticate(
-    'facebook',
+    req.params.provider,
     {scope: ['public_profile', 'email']}
     )(req, res);
 });
 
 //facebook OAuth
-router.get('/callback/facebook', function(req, res) {
-  passport.authenticate('facebook', function(err, user, info) {
+router.get('/callback/:provider', function(req, res) {
+  passport.authenticate(req.params.provider, function(err, user, info) {
     if (err) throw err;
     if (user) {
       req.login(user, function(err) {
