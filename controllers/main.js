@@ -91,7 +91,7 @@ router.get('/passport/:provider', function(req, res) {
 });
 
 //facebook OAuth
-router.get('logIn/callback/:provider', function(req, res) {
+router.get('/callback/:provider', function(req, res) {
   passport.authenticate(req.params.provider, function(err, user, info) {
     if (err) throw err;
     if (user) {
