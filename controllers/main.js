@@ -75,7 +75,7 @@ router.get('/logout', function(req, res) {
 });
 
 
-router.get('/logIn/facebook', function(req, res) {
+router.get('/logIn/:provider', function(req, res) {
   passport.authenticate(
     req.params.provider,
     {scope: ['public_profile', 'email']}
