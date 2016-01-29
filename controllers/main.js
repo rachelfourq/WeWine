@@ -75,15 +75,15 @@ router.get('/logout', function(req, res) {
 });
 
 
-router.get('/logIn/:provider', function(req, res) {
+router.get('/logIn/facebook', function(req, res) {
   passport.authenticate(
-    req.params.provider,
+    'facebook',
     {scope: ['public_profile', 'email']}
   )(req, res);
 });
 
 // Facebook Oauth login
-router.get('/passport/:provider', function(req, res) {
+router.get('/passport/facebook', function(req, res) {
   passport.authenticate(
     'facebook',
     {scope: ['public_profile', 'email']}
@@ -91,7 +91,7 @@ router.get('/passport/:provider', function(req, res) {
 });
 
 //facebook OAuth
-router.get('/callback/:provider', function(req, res) {
+router.get('/callback/facebook', function(req, res) {
   passport.authenticate('facebook', function(err, user, info) {
     if (err) throw err;
     if (user) {
