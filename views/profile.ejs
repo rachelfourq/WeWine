@@ -5,7 +5,9 @@
     <div class="row">
     <h3>WeWine.</h3>
       <li>
+        <% if userPic {%>
         <img src="<%= userPic %>">
+        <% } %>
         <a class="waves-effect white modal-trigger grey-text" href="#modal1">Update Profile Picture</a>
       </li> 
       </div>
