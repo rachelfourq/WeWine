@@ -114,16 +114,21 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/profile', function(req, res) {
-  var userPic = cloudinary.url(req.user.pic, { width: 150, height: 150, crop: 'thumb', gravity: 'face',radius: 'max' })
 	if(req.user) {
-  db.favorite.findAll( {
-    where: {
-      userId: req.user.id
-    }
-  }).then(function(data){
-    res.render("profile", {data: data, userPic: userPic})
-  })
-	}else {
+    var userPic
+    if (req.user.pic) {
+      userPic = cloudinary.url(req.user.pic, { width: 150, height: 150, crop: 'thumb', gravity: 'face',radius: 'max' })
+    } else {
+      userPic = 'img/Wine.png'
+    };
+    db.favorite.findAll( {
+      where: {
+        userId: req.user.id
+      }
+    }).then(function(data){
+      res.render("profile", {data: data, userPic: userPic})
+    });
+	} else {
 	res.send("You're not logged in");
 }
 })
