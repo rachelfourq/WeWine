@@ -48,27 +48,27 @@
 
 
 <!-- cards with fave wines -->
-<div class="col l9 offset-l3">
+<div class='profile_cards'>
+  <div class="col l9 offset-l3">
    <% data.forEach(function(wine) { %>
-   <div class="col l4">
-      <a href='/favorites/<%= wine.id %>'><div class="card small z-depth-3">
-           <div class=" waves-effect waves-block waves-light  center-align">
-               <img class="circle" src="<%= wine.image %>"> </div>
-              <div id="middle_row" class="row valign-wrapper center-align">
-               <div class="col l10 offset-l1">
-                   <p class="center-align valign-wrapper"><%= wine.title %></p>
-                <div id="bottom_row" class="row valign-wrapper center-align">
-                <div class="col l10 offset-l3">
-                   <a class="delete-btn btn-floating btn-small waves-effect waves-light grey"><i class="material-icons">add</i></a>
-                   </div>
-                   </div>
-               </div>
-               </div>
-
+    <div class="col l4">
+      <a href='/favorites/<%= wine.id %>'>
+        <div class="card small z-depth-3">
+            <div class=" waves-effect waves-block waves-light  center-align">
+              <img class="circle" src="<%= wine.image %>"> 
+            </div>
+            <div id="middle_row" class="row valign-wrapper center-align">
+              <div class="col l10 offset-l1">
+                <p class="center-align valign-wrapper title"><%= wine.title %></p>
+              </div>
+            </div>
+            <div class='col l10 offset-l2'>
+            <a href="/profile/<%= wine.id %>/delete" class="delete-btn btn-floating btn-small waves-effect red"><i class="fa fa-minus"></i></a>
+            </div>
           </div>
-
-        </div>
+      </div>
    <% }); %>
+  </div>
 </div>
 
 

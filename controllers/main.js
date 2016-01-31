@@ -134,18 +134,18 @@ router.get('/profile', function(req, res) {
 })
 
 //delete button -- not working
-router.delete('/delete/:id', function(req, res) {
- db.favorite.find({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(favorite) {
-    favorite.destroy()
-    // res.send({'msg': 'success'});
-  }).then(function(e) {
-    res.send({'msg': 'error', 'error': e});
-  });
-});
+// router.delete('/delete/:id', function(req, res) {
+//  db.favorite.find({
+//     where: {
+//       id: req.params.id
+//     }
+//   }).then(function(favorite) {
+//     favorite.destroy()
+//     // res.send({'msg': 'success'});
+//   }).then(function(e) {
+//     res.send({'msg': 'error', 'error': e});
+//   });
+// });
 
 //settings page
 router.get('/settings', function(req, res) {
