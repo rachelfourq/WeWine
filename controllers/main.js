@@ -75,11 +75,11 @@ router.get('/logout', function(req, res) {
 });
 
 
-// router.get('/logIn/:provider', function(req, res) {
-//   passport.authenticate(
-//     req.params.provider
-//   )(req, res);
-// });
+router.get('/logIn/:provider', function(req, res) {
+  passport.authenticate(
+    req.params.provider
+  )(req, res);
+});
 
 // Facebook Oauth login
 router.get('/passport/:provider', function(req, res) {
