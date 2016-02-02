@@ -119,7 +119,7 @@ router.get('/profile', function(req, res) {
     if (req.user.pic) {
       userPic = cloudinary.url(req.user.pic, { width: 150, height: 150, crop: 'thumb',radius: 'max' })
     } else {
-      userPic = 'img/Wine.png'
+      userPic = 'img/avitar.png'
     };
     db.favorite.findAll( {
       where: {
@@ -148,31 +148,31 @@ router.get('/profile', function(req, res) {
 // });
 
 //delete
-// router.get("/profile/:id/delete", function(req, res) {
-//        var id = req.params.id
-//        db.favorite.destroy({
-//            where: {
-//                id: id
-//            }
-//        }).then(function() {
-//            res.redirect("/profile");
-//        }).catch(function(e){
-//            res.send({
-//             'msg': 'error',
-//             'error':e
-//       });
-//   });
-//  });
-
-router.get("/profile/:id/delete", function(req, res) {
+router.get("/profile/delete/:id", function(req, res) {
+       var id = req.params.id
        db.favorite.destroy({
            where: {
-               id: req.params.id
+               id: id
            }
        }).then(function() {
            res.redirect("/profile");
-        });
+       }).catch(function(e){
+           res.send({
+            'msg': 'error',
+            'error':e
+      });
+    });
  });
+
+// router.get("/profile/:id/delete", function(req, res) {
+//        db.favorite.destroy({
+//            where: {
+//                id: req.params.id
+//            }
+//        }).then(function() {
+//            res.redirect("/profile");
+//         });
+//  });
 
 //settings page
 router.get('/settings', function(req, res) {
