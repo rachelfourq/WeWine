@@ -117,7 +117,7 @@ router.get('/profile', function(req, res) {
 	if(req.user) {
     var userPic
     if (req.user.pic) {
-      userPic = cloudinary.url(req.user.pic, { width: 150, height: 150, crop: 'thumb', gravity: 'face',radius: 'max' })
+      userPic = cloudinary.url(req.user.pic, { width: 150, height: 150, crop: 'thumb',radius: 'max' })
     } else {
       userPic = 'img/Wine.png'
     };
@@ -134,18 +134,45 @@ router.get('/profile', function(req, res) {
 })
 
 //delete button -- not working
-// router.delete('/delete/:id', function(req, res) {
-//  db.favorite.find({
+// router.get('/profile/:id/delete', function(req, res) {
+//  db.favorite.destroy({
 //     where: {
-//       id: req.params.id
+//       id: id
 //     }
-//   }).then(function(favorite) {
-//     favorite.destroy()
+//   }).then(function() {
+//     res.redirect('/profile')
 //     // res.send({'msg': 'success'});
-//   }).then(function(e) {
+//   }).catch(function(e) {
 //     res.send({'msg': 'error', 'error': e});
 //   });
 // });
+
+//delete
+// router.get("/profile/:id/delete", function(req, res) {
+//        var id = req.params.id
+//        db.favorite.destroy({
+//            where: {
+//                id: id
+//            }
+//        }).then(function() {
+//            res.redirect("/profile");
+//        }).catch(function(e){
+//            res.send({
+//             'msg': 'error',
+//             'error':e
+//       });
+//   });
+//  });
+
+router.get("/profile/:id/delete", function(req, res) {
+       db.favorite.destroy({
+           where: {
+               id: req.params.id
+           }
+       }).then(function() {
+           res.redirect("/profile");
+        });
+ });
 
 //settings page
 router.get('/settings', function(req, res) {
