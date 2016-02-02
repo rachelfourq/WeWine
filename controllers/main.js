@@ -119,7 +119,7 @@ router.get('/profile', function(req, res) {
     if (req.user.pic) {
       userPic = cloudinary.url(req.user.pic, { width: 150, height: 150, crop: 'thumb',radius: 'max' })
     } else {
-      userPic = 'img/avitar.png'
+      userPic = 'img/avatar2.png'
     };
     db.favorite.findAll( {
       where: {
